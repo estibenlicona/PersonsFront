@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <button mat-button [routerLink]="['/home']">
+    <mat-icon class="mat-button-wrapper">home</mat-icon>
+    <span>Home</span>
+  </button>
+  <button mat-button [routerLink]="['/persons']" *ngIf="bPerson">
+    <mat-icon class="mat-button-wrapper">person</mat-icon>
+    <span>Persons</span>
+  </button>
+  <span class="example-spacer"></span>
+  <button mat-button class="example-icon" (click)="LogOut()">
+    <mat-icon class="mat-button-wrapper">logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-toolbar>

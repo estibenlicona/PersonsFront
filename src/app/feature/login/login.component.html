@@ -1,0 +1,17 @@
+<div class="main-content" [formGroup]="formLogin">
+  <mat-card style="width: 350px;">
+    <h2 mat-dialog-title>Login</h2>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-flat-button color="primary" [disabled]="!this.formLogin.valid" (click)="OnSubmit()">Next</button>
+  </mat-card>
+</div>

@@ -1,0 +1,60 @@
+<app-toolbar></app-toolbar>
+<div class="main-content">
+  <button mat-raised-button color="primary" (click)="openDialog()" [disabled]="!checkScope('Persons.Create')">
+    <mat-icon class="mat-button-wrapper">person_add</mat-icon>
+    <span>New</span>
+  </button>
+  <mat-card style="margin-top: 15px;">
+    <div class="info-wrapper" *ngIf="this.length == 0">
+      <mat-icon>info</mat-icon> There are no records to show.
+    </div>
+    <div class="mat-elevation-z0">
+      <table mat-table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="document">
+          <th mat-header-cell *matHeaderCellDef>Document</th>
+          <td mat-cell *matCellDef="let element"> {{element.document}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef>First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef> Edit </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" (click)="openDialogEdit(element)" [disabled]="!checkScope('Persons.Edit')">
+              <mat-icon>edit_note</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef> Delete </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" (click)="onDelete(element.id)" [disabled]="!checkScope('Persons.Delete')">
+              <mat-icon>delete_sweep</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent()"
+        showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </mat-card>
+
+</div>

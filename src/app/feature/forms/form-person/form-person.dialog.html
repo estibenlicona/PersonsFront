@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>{{ operation }} Person</h1>
+<div mat-dialog-content [formGroup]="formPerson">
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Document</mat-label>
+    <input matInput formControlName="document">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Firts Name</mat-label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button [mat-dialog-close] color="primary">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!formPerson.valid" cdkFocusInitial (click)="OnSubmit()">{{ operation }}</button>
+</div>
